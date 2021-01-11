@@ -28,6 +28,13 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: TextTheme(
+          subtitle1: TextStyle(
+            color: generateMaterialColor(ColorPalette.onSurface),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          )
+        )
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -150,10 +157,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildCountdownCards() {
-    return Text('here goes the cards', style: TextStyle(color: Colors.white));
+
+    return Card(
+      color: generateMaterialColor(ColorPalette.surface),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+        child: Column(
+            children: <Widget>[
+              const ListTile(
+                leading: Image(
+                  image: AssetImage('assets/images/guild-quests-icon.png')
+                ),
+                title: Text('Guild Quests', style: TextStyle(
+                  fontSize: 16,
+                )),
+              )
+            ]
+        )
+      )
+    );
   }
 }
-
-// class Palette {
-//   static const Color primary = Color(0xFF2F4D7D);
-// }
